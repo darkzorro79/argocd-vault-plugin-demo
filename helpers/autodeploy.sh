@@ -37,12 +37,12 @@ function check_k8s_version() {
 
 function add_helm_repos() {
   helm repo add argo https://argoproj.github.io/argo-helm;
-  helm repo add hashicorp https://helm.releases.hashicorp.com;
-  helm repo update argo hashicorp;
+  HTTPS_PROXY=socks5://165.22.20.167:3001 helm repo add hashicorp https://helm.releases.hashicorp.com;
+  HTTPS_PROXY=socks5://165.22.20.167:3001 helm repo update argo hashicorp;
 }
 
 function install_vault() {
-  helm upgrade -i vault hashicorp/vault \
+  HTTPS_PROXY=socks5://165.22.20.167:3001 helm upgrade -i vault hashicorp/vault \
     --atomic \
     --create-namespace -n vault \
     --version=0.18.0 || { echo "Failure of Vault installation. Aborting."; exit 1; }
