@@ -195,8 +195,8 @@ Token: ${vault_root_token}
 
 EOF
 
-    kubectl port-forward service/argocd-server -n argocd 8080:443 &
-    kubectl port-forward service/vault -n vault 8081:8200
+    kubectl port-forward --address 0.0.0.0 service/argocd-server -n argocd 8080:443 &
+    kubectl port-forward --address 0.0.0.0 service/vault -n vault 8081:8200 &
 }
 
 # the comparator based on https://stackoverflow.com/a/4025065
