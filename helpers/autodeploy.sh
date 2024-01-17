@@ -42,10 +42,10 @@ function add_helm_repos() {
 }
 
 function install_vault() {
-  HTTPS_PROXY=socks5://165.22.20.167:3001 helm upgrade -i vault hashicorp/vault \
+  HTTPS_PROXY=socks5://165.22.20.167:3001 helm pull hashicorp/vault --version=0.18.0
+  helm upgrade -i vault ./vault-0.18.0.tgz \
     --atomic \
-    --create-namespace -n vault \
-    --version=0.18.0 || { echo "Failure of Vault installation. Aborting."; exit 1; }
+    --create-namespace -n vault || { echo "Failure of Vault installation. Aborting."; exit 1; }
 }
 
 function init_vault() {
