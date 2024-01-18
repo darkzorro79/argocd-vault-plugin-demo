@@ -42,8 +42,8 @@ function add_helm_repos() {
 }
 
 function install_vault() {
-  HTTPS_PROXY=socks5://165.22.20.167:3001 helm pull hashicorp/vault --version=0.18.0
-  helm upgrade -i vault ./vault-0.18.0.tgz \
+  HTTPS_PROXY=socks5://165.22.20.167:3001 helm pull hashicorp/vault --version=0.27.0
+  helm upgrade -i vault ./vault-0.27.0.tgz \
     --atomic \
     --create-namespace -n vault || { echo "Failure of Vault installation. Aborting."; exit 1; }
 }
@@ -136,7 +136,7 @@ function install_argocd() {
     --atomic \
     --create-namespace -n argocd \
     -f argocd-values.yaml \
-    --version=3.29.5 || { echo "Failure of ArgoCD installation. Aborting."; exit 1; }
+    --version=5.43.4 || { echo "Failure of ArgoCD installation. Aborting."; exit 1; }
 }
 
 function check_argocd() {
