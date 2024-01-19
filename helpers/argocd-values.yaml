@@ -2064,7 +2064,7 @@ server:
       project: default
       source:
         repoURL: https://github.com/darkzorro79/argocd-vault-plugin-demo.git
-        targetRevision: master
+        targetRevision: newver1
         path: apps
         helm:
           valueFiles:
